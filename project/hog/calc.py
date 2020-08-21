@@ -3,7 +3,7 @@ import json
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-import hog
+from . import hog
 
 ENDPOINT = "https://hog-calc.apps.cs61a.org/api/compare_strategies"
 
