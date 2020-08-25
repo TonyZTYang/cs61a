@@ -1,7 +1,7 @@
 """CS 61A Presents The Game of Hog."""
 
-from .dice import six_sided, four_sided, make_test_dice
-from .ucb import main, trace, interact
+from dice import six_sided, four_sided, make_test_dice
+from ucb import main, trace, interact
 
 GOAL_SCORE = 100  # The goal of Hog is to score 100 points.
 
@@ -22,6 +22,17 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    total = 0
+    i = 1
+    while i <= num_rolls:
+        roll = dice()
+        if roll == 1:
+            return 1
+        else:
+            total += roll
+        i += 1
+    return total
+        
     # END PROBLEM 1
 
 
