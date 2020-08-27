@@ -124,13 +124,36 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    def feral_detection(num_rolls, last_incre):
+        if abs(num_rolls - last_incre) == 2:
+            return True
+        else:
+            return False
+
+    increment0 = 0
+    increment1 = 0
+    added = 0
     while score0 < goal and score1 < goal:
         if not who:
-            score0 += take_turn(strategy0(score0, score1), score1, dice)
+            num_rolls = strategy0(score0, score1)
+            last_incre = increment0
+            increment0 = take_turn(num_rolls, score1, dice)
+            if feral_hogs and feral_detection(num_rolls, last_incre):
+                added = increment0 + 3
+            else:
+                added = increment0
+            score0 += added
             if is_swap(score0, score1):
                 score0, score1 = score1, score0
         else:
-            score1 += take_turn(strategy1(score1, score0), score0, dice)
+            num_rolls = strategy1(score1, score0)
+            last_incre = increment1
+            increment1 = take_turn(num_rolls, score0, dice)
+            if feral_hogs and feral_detection(num_rolls,last_incre):
+                added = increment1 + 3
+            else:
+                added = increment1
+            score1 += added
             if is_swap(score1, score0):
                 score0, score1 = score1, score0
         who = other(who)
