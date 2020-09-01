@@ -1,5 +1,6 @@
 """CS 61A Presents The Game of Hog."""
 
+from inspect import ArgSpec
 from dice import six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
@@ -299,6 +300,15 @@ def make_averaged(original_function, trials_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def receive_args(*args):
+        i = 1
+        result = 0
+        while i <= trials_count:
+            result += original_function(*args)
+            i += 1
+        return result/trials_count
+    return receive_args
+
     # END PROBLEM 8
 
 
