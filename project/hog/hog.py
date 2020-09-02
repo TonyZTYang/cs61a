@@ -381,7 +381,9 @@ def bacon_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     rolls NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 6  # Replace this statement
+    if 10 - opponent_score % 10 + opponent_score // 10 >= cutoff:
+        return 0
+    return num_rolls
     # END PROBLEM 10
 
 
@@ -391,7 +393,15 @@ def swap_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     non-beneficial swap. Otherwise, it rolls NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 6  # Replace this statement
+    if abs((score + 10 - opponent_score % 10 + opponent_score // 10) % 10\
+         - opponent_score % 10) == opponent_score // 10:
+        if opponent_score > score + 10 - opponent_score % 10 + \
+            opponent_score // 10:
+            return 0
+        else:
+            return num_rolls
+    else:
+        return bacon_strategy(score, opponent_score, cutoff, num_rolls)
     # END PROBLEM 11
 
 
