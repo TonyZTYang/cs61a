@@ -111,7 +111,7 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
-
+    return lambda x: compose1(f,g)(x) == compose1(g,f)(x)
 
 
 def cycle(f1, f2, f3):
