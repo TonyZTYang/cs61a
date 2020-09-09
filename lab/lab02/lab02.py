@@ -70,9 +70,15 @@ def both_paths(sofar="S"):
     SUU
     """
     "*** YOUR CODE HERE ***"
-
-
-
+    print(sofar)
+    def up():
+        su = sofar + "U"
+        return both_paths(su)
+    def down():
+        sd = sofar + "D"
+        return both_paths(sd)
+    return up, down
+    
 def compose1(f, g):
     """Return the composition function which given x, computes f(g(x)).
 
