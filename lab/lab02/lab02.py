@@ -141,4 +141,18 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
-
+    def nest(n):
+        def nested(x):
+            i, res, current = 0, x, f1
+            while i < n:
+                res = current(res)
+                if current == f1:
+                    current = f2
+                elif current == f2:
+                    current = f3
+                else:
+                    current = f1
+                i += 1
+            return res
+        return nested
+    return nest
