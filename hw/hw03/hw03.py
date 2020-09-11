@@ -161,6 +161,22 @@ def count_change(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def change(t, exp):
+        if t < 0:
+            return 0
+        elif exp < 0:
+            return 0
+        elif t == 0:
+            return 1
+        else:
+            return change(t - 2 ** exp, exp) + change(t, exp - 1)
+        
+    def find_limit(total, exp):
+        if total < 2 ** exp:
+            return exp - 1
+        else:
+            return find_limit(total, exp + 1)
+    return change(total, find_limit(total, 0))
 
 
 def print_move(origin, destination):
