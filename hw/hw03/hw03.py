@@ -49,7 +49,7 @@ def g(n):
     else: 
         return g(n - 1) + 2 * g(n - 2) + 3 * g(n - 3)
 
-def g_iter(n):
+def g_iter_1(n):
     """Return the value of G(n), computed iteratively.
 
     >>> g_iter(1)
@@ -77,6 +77,36 @@ def g_iter(n):
             todo.extend([(curr - 1, multi), (curr - 2, multi * 2), (curr -3, multi * 3)])
     return total
 
+def g_iter(n):
+    """Return the value of G(n), computed iteratively.
+
+    >>> g_iter(1)
+    1
+    >>> g_iter(2)
+    2
+    >>> g_iter(3)
+    3
+    >>> g_iter(4)
+    10
+    >>> g_iter(5)
+    22
+    >>> from construct_check import check
+    >>> # ban recursion
+    >>> check(HW_SOURCE_FILE, 'g_iter', ['Recursion'])
+    True
+    """
+    "*** YOUR CODE HERE ***"
+    if n <= 3:
+        return n
+    else:
+        i, sum = 4, 0
+        minus_one, minus_two, minus_three = 3, 2, 1
+        while i <= n:
+            sum = minus_one + 2* minus_two + 3 * minus_three
+            minus_one, minus_two, minus_three = sum, minus_one, minus_two
+            i += 1
+        return sum
+    
 
 def missing_digits(n):
     """Given a number a that is in sorted, increasing order,
