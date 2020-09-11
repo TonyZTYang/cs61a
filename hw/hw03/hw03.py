@@ -136,7 +136,13 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    if n // 10 == 0:
+        return 0
+    else:
+        curr, next, rest, missing = n % 10, (n // 10) % 10, n // 10, 0
+        if next < curr:
+            missing = curr - next - 1
+        return missing + missing_digits(rest)
 
 def count_change(total):
     """Return the number of ways to make change for total.
