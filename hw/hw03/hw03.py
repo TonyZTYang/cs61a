@@ -21,6 +21,7 @@ def composer(func=lambda x: x):
     """
     def func_adder(g):
         "*** YOUR CODE HERE ***"
+        return composer(lambda x: func(g(x)))
     return func, func_adder
 
 
@@ -43,6 +44,10 @@ def g(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n <= 3:
+        return n
+    else: 
+        return g(n - 1) + 2 * g(n - 2) + 3 * g(n - 3)
 
 def g_iter(n):
     """Return the value of G(n), computed iteratively.
@@ -63,6 +68,14 @@ def g_iter(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    todo, total, curr = [(n,1)], 0, 0
+    while todo:
+        curr, multi = todo.pop()
+        if curr <= 3:
+            total += curr * multi
+        else:
+            todo.extend([(curr - 1, multi), (curr - 2, multi * 2), (curr -3, multi * 3)])
+    return total
 
 
 def missing_digits(n):
