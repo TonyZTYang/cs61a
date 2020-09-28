@@ -12,7 +12,12 @@ def pascal(row, column):
     3
     """
     "*** YOUR CODE HERE ***"
-
+    if column > row:
+        return 0
+    elif row == 0 or column == 0 or column == row:
+        return 1
+    else:
+        return pascal(row - 1, column) + pascal(row - 1, column - 1)
 
 def compose1(f, g):
     """"Return a function h, such that h(x) = f(g(x))."""
