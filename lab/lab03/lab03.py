@@ -112,4 +112,22 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    def direction(n):
+        def contains_eight(n):
+            if n == 0:
+                return 1
+            else:
+                if n % 10 == 8:
+                    return -1
+                else:
+                    return contains_eight(n // 10)
+        if n % 8 == 0:
+            return -1
+        else:
+            return contains_eight(n)
+    def helper(curr, n, last):
+        if curr > n:
+            return 0
+        else:
+            return last + helper(curr + 1, n, direction(curr) * last)
+    return helper(1, n, 1)
