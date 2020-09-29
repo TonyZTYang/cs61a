@@ -34,12 +34,12 @@ def kv(prev=lambda x: 0):
     """
     def put(k, v):
         def get(k2):
-            if ______:
-                ______
-            else:
-                ______
-        return ______
-    return ______
+             if k2 == k:
+                 return v
+             else:
+                 return prev(k2)
+        return get, kv(lambda k1: v if k1 == k else prev(k1))
+    return put
 
 # ORIGINAL SKELETON FOLLOWS
 
