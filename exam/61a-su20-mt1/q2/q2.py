@@ -25,21 +25,32 @@ def storeroom(radium, fn_even, fn_odd):
     """
     evens_defined, odds_defined = False, False
     evens, odds = None, None
-    while ______:
-        ______ = ______
-        if ______:
-            if ______:
-                ______
-                ______
+    while radium > 0:
+        radium, curr = radium // 10, radium % 10
+        if curr % 2:
+            if odds_defined is False:
+                odds = curr
+                odds_defined = True
             else:
-                ______
+                odds = fn_odd(odds, curr)
         else:
-            if ______:
-                ______
-                ______
+            if evens_defined is False:
+                evens = curr
+                evens_defined = True
             else:
-                ______
+                evens = fn_even(evens, curr)
     return evens > odds
+
+# def storeroom(radium, fn_even, fn_odd):
+#     evens, odds = None, None
+#     while radium > 0:
+#         radium, curr = radium // 10, radium % 10
+#         if curr % 2:
+#             if 
+#             odds = fn_odd(odds, curr)
+#         else:
+#             evens = fn_even(evens, curr)
+#     return evens > odds
 
 # ORIGINAL SKELETON FOLLOWS
 
