@@ -14,11 +14,11 @@ def maxkd(meteor, k):
     >>> maxkd(32749, 18)
     32749
     """
-    if ______:
-        return ______
-    a = ______
-    b = ______
-    return ______
+    if k == 0 or meteor == 0:
+        return 0
+    a = maxkd(meteor // 10, k - 1) * 10 + meteor % 10
+    b = maxkd(meteor // 10, k)
+    return max(a,b)
 
 # ORIGINAL SKELETON FOLLOWS
 
